@@ -62,7 +62,7 @@ if (dataFetched){
 	
   return <div>
   	  <h1 className="title">
-  <a href="/form">test form</a>
+  <Link href="/form">test form</Link>
 </h1>
 <div>
 {time &&

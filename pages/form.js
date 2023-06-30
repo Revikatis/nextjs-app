@@ -31,7 +31,7 @@ const handleSubmit = async (event) => {
   };
   return (
   <div>
-    <a href="/">index</a>
+    <Link href="/">index</Link>
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name</label>
       <input type="text" id="name" name="name" required />
