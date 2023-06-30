@@ -8,19 +8,26 @@ function getId() {
   return UUid++ + '';
 }
 
+export async function getServerSideProps() {
+    const dataTime = JSON.stringify({ time: new Date() });
+    return { props: { dataTime } };
+}
+
+
 const PRODUCTS = [
   {Category: "kategoria", Price: "0", Name: "nazwa"},
 ];
 
 var dataFetched = false;
 
-export default function App() {
+export default function App(dataTime) {
 const [productData, setProductData] = useState();
 const [time, setTime] = useState()
 
 var data=PRODUCTS;
 
- 
+const serverData = JSON.parse(dataTime.dataTime);
+console.log(serverData.time)
 
 const getApiData = async () => {
   const response = await fetch( 'api/products' 
@@ -67,6 +74,9 @@ if (dataFetched){
 <div>
 {time &&
                     `Czas na serwerze ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`}
+</div>
+<div>
+{serverData.time}
 </div>
   <ProductTable products={data} AddToKoszyk={AddToKoszyk}/>
   <Koszyk products={koszykProducts} DeleteFromKoszyk={DeleteFromKoszyk} sum={sum}/>
