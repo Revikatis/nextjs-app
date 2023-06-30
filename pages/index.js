@@ -7,8 +7,11 @@ export async function getServerSideProps() {
     return { props: { data } };
 }
 
-export default function Home({ data }: { data: { time: string } }) {
-    const serverData = JSON.parse(data);
+//function ProductTable({ products, AddToKoszyk }) 
+export default function Home( data) {
+    const serverData = JSON.parse(data.data);
+	//const serverData = data.data;
+	console.log(data.data)
 
     return (
     <div className={styles.container}>
